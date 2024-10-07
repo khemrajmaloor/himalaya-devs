@@ -124,7 +124,7 @@
 
         <div class="portfolio">
             <!-- Portfolio item 01 -->
-            <a href="portfolio-item1.html" class="portfolio__item" onmouseover="showCaption(this)"
+            <a href="portfolio-item1" class="portfolio__item" onmouseover="showCaption(this)"
                 onmouseout="hideCaption(this)">
                 <div class="portfolio-item-caption">Ecommerce Site</div>
                 <img src="img/book2.png" alt="" class="portfolio__img">

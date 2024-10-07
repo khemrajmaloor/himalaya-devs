@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Roboto+Slab:400,700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
-
+    @vite(['resources/css/app.css', 'resources/js/app.js']);
 </head>
 
 <body>
