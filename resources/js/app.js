@@ -1,1 +1,35 @@
 import './bootstrap';
+
+function showCaption(element) {
+    element.firstElementChild.style.display = "block";
+}
+
+function hideCaption(element) {
+    element.firstElementChild.style.display = "none";
+}
+
+// Use const for variables that won't be reassigned
+const skillsets = document.getElementsByClassName("skillset");
+
+Array.from(skillsets).forEach(skillset => {
+    const skills = skillset.getElementsByTagName("div");
+    Array.from(skills).forEach(skill => {
+        const html = "<i style='color:#f8333c' class='fa fa-code'></i>&nbsp;";
+        skill.insertAdjacentHTML("afterbegin", html);
+    });
+});
+
+// Use const for navToggle and navLinks since they won't be reassigned
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelectorAll('.nav__link');
+
+navToggle.addEventListener('click', () => {
+    document.body.classList.toggle('nav-open');
+});
+
+// Use forEach to add click event listeners to navLinks
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        document.body.classList.remove('nav-open');
+    });
+});
