@@ -13,7 +13,7 @@
 
     <!-- Update these with your own fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Roboto+Slab:400,700&display=swap" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js']);
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
@@ -201,7 +201,6 @@
 
 
 
-    <script src="js/index.js"></script>
 </body>
 
 </html>
