@@ -114,7 +114,7 @@
                 Resume</a>
         </div>
 
-        <img src="img/img1.png" alt="Jane leaning against a bus" class="about-me__img">
+        <img src={{asset('/images/img1.png')}} alt="Jane leaning against a bus" class="about-me__img">
     </section>
 
     <!-- My Work -->
