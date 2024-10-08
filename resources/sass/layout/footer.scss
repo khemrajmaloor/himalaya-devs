@@ -19,17 +19,21 @@ $color_3: black;
 }
 .footer__link {
 	font-weight: var(--fw-bold);
-	&:hover {
-		opacity: .7;
-		text-decoration: underline;
-	}
 }
+
+.footer__link:hover {
+	opacity: .7;
+	text-decoration: underline;
+}
+
 .social-list__link {
-	&:hover {
-		opacity: .7;
-	}
 	padding: .5em;
 }
+
+.social-list__link:hover {
+	opacity: .7;
+}
+
 .social-list {
 	list-style: none;
 	display: flex;
