@@ -30,22 +30,15 @@
         <img src="img/meme.png" alt="" class="portfolio__img">
     </a> --}}
 
-
     <div class="portfolio__item devs">
-        <div class="skillset">  <div></div></div>
+     <div class="pens-brush"><i class="fa-solid fa-paintbrush"></i></div>
         Lorem ipsum dolor sit amet. Nam repellat aliquam vel rerum repudiandae aut quae modi sed aperiam repellendus ex
         officiis voluptatem sit sunt omnis et fuga animi.
     </div>
     <div class="portfolio__item devs">
-        <div class="skillset"> <div></div></div>
+        <div class="pens-brush"><i class="fa-solid fa-code"></i></div>
         Lorem ipsum dolor sit amet. Nam repellat aliquam vel rerum repudiandae aut quae modi sed aperiam repellendus ex
         officiis voluptatem sit sunt omnis et fuga animi.
     </div>
-    <div class="portfolio__item devs">
-        <div class="skillset"> <div></div></div>
-        Lorem ipsum dolor sit amet. Nam repellat aliquam vel rerum repudiandae aut quae modi sed aperiam repellendus ex
-        officiis voluptatem sit sunt omnis et fuga animi.
-    </div>
-
 
 </div>
