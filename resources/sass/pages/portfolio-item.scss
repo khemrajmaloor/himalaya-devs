@@ -1,0 +1,37 @@
+
+/* Individual portfolio item styles */
+
+.portfolio-item-individual {
+  padding: 0 2em 2em;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.portfolio-item-individual p {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.portfolio-item-details {
+  text-align: center;
+  margin-top: 6rem;
+}
+
+div.portfolio-item-details button {
+  font-weight: 600;
+  width: 11rem;
+  margin: 1rem;
+  color: white;
+  background: black;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+@media (max-width:600px) {
+  div.portfolio-item-details button {
+      width: 9rem;
+      margin: 0.5rem;
+      padding: 0.5rem;
+  }
+}
