@@ -6,5 +6,5 @@ Route::get('/', function () {
     return view('index');
 });
 Route::get('/portfolio-item1', function () {
-    return view('sec');
+    return view('book');
 });
