@@ -131,6 +131,15 @@ h3 {
   margin-bottom: 2em;
 }
 
+.portfolio__item.devs {
+  padding: 30px;
+}
+
+.portfolio__item.devs .skillset {
+  display: flex;
+  justify-content: center;
+}
+
 /* header style start */
 header {
   display: flex;
