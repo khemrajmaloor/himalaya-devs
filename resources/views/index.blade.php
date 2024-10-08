@@ -9,7 +9,7 @@
       </h1>
       {{-- <p class="section__subtitle section__subtitle--intro">FULLSTACK DEV</p> --}}
       <p class="section__subtitle section__subtitle--intro">AFNSDFSDFSDF</p>
-      <img src="img/image0.png" alt="a picture" style="height: 325px; min-width: 250px;" class="intro__img">
+      <img src="{{asset('images/devs-works.png')}}" alt="a picture" style="height: 325px; min-width: 250px;" class="intro__img">
   </section>
 
   <!-- My services -->
@@ -77,7 +77,7 @@
               Resume</a>
       </div>
 
-      <img src={{ asset('/images/img1.png') }} alt="Jane leaning against a bus" class="about-me__img">
+      <img src={{ asset('/images/wall.png') }} alt="Jane leaning against a bus" class="about-me__img">
   </section>
 
   <!-- My Work -->
