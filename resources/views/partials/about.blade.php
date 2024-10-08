@@ -11,7 +11,7 @@
          projects I build.
          I believe that learning in the tech industry never really ends, and so, I am always looking for ways to
          expand my current skillset and gain new skills.</p>
-     <a class="btn" style="margin-bottom:1rem" href="GurpreetKaurResume.pdf" target="blank">Check My
+     <a class="btn" style="margin-bottom:1rem" href="{{ asset('files/khemrajresume.pdf') }}" target="blank">Check My
          Resume</a>
  </div>
 
