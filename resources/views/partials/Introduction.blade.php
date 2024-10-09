@@ -4,4 +4,4 @@
 </h1>
 {{-- <p class="section__subtitle section__subtitle--intro">FULLSTACK DEV</p> --}}
 <p class="section__subtitle section__subtitle--intro">AFNSDFSDFSDF</p>
-<img src="{{asset('images/devs-works.png')}}" alt="a picture" style="height: 325px; min-width: 250px;" class="intro__img">
+<img src="{{asset('images/devs-works.png')}}" alt="a picture" style="height: 325px; " class="intro__img">
