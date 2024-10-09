@@ -50,4 +50,8 @@ $background-color_1: var(--clr-dark);
 		padding-left: 37%;
 		margin-bottom: 2rem;
 	}
+	.portfolio {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(204PX, 1fr));
+	}
 }
