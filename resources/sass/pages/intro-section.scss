@@ -1,20 +1,25 @@
-
 /*  Intro section  */
 .intro {
 	position: relative;
+	width: fit-content;
+	margin-inline: auto;
 }
+
 .intro__img {
 	box-shadow: var(--bs);
 }
+
 .section__subtitle--intro {
 	display: inline-block;
 }
+
 .skillset {
 	text-align: left;
 	line-height: 3;
 	margin-top: 1.5rem;
 }
-@media (min-width: 600px) {
+
+@media (min-width: 768px) {
 	.intro {
 		display: grid;
 		width: min-content;
@@ -23,13 +28,15 @@
 		grid-template-areas: "img title" "img subtitle";
 		grid-template-columns: min-content max-content;
 	}
+
 	.intro__img {
-		height: 228px;
 		grid-area: img;
-		min-width: 294px;
+		max-width: 294px;
+		aspect-ratio: 294/325;
 		position: relative;
 		z-index: -1;
 	}
+
 	.section__subtitle--intro {
 		align-self: start;
 		grid-column: -1 / 1;
