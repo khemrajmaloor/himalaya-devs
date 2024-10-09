@@ -19,6 +19,7 @@
         </li>
 
     </ul>
+    <button id="scrollUpBtn" class="scroll-up-btn"><i class="fa-solid fa-angle-up"></i></button>
 </footer>
 </body>
 
