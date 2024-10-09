@@ -26,7 +26,16 @@
         0.125em 0.125em 0.25em rgba(0, 0, 0, .15);
 }
 
-@media (min-width: 800px) {
+@media (min-width: 768px) {
+    :root {
+        --fs-h1: 3.5rem;
+        --fs-h2: 3rem;
+        --fs-h3: 1.125rem;
+        --fs-body: 1rem;
+    }
+}
+
+@media (min-width: 992px) {
     :root {
         --fs-h1: 4.5rem;
         --fs-h2: 3.75rem;
