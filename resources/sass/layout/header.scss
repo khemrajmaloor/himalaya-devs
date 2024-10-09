@@ -36,9 +36,9 @@ header {
     height: 100%;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items: center;
-    margin: 7;
-    padding: 0;
+    align-items: left;
+    margin:0;
+    // padding: 0;
 
     .nav__link {
       color: inherit;
@@ -109,3 +109,36 @@ header {
 }
 
 /* header style end */
+$color_1: #333;
+$color_2: #fff;
+$color_3: #f8333c;
+$font-family_1: "Font Awesome 6 Free";
+
+.nav__link {
+	position: relative;
+	display: inline-block;
+	padding-right: 50px;
+	text-decoration: none;
+	color: $color_1;
+  font-size: 35px !important;
+	transition: color 0.3s ease;
+	&::before {
+		content: "\f178";
+		font-family: $font-family_1;
+		font-weight: 900;
+		position: absolute;
+		right: 10px;
+		top: 50%;
+		transform: translateY(-50%);
+		opacity: 0;
+		transition: right 0.3s ease, opacity 0.3s ease;
+		color: $color_2;
+	}
+	&:hover {
+		&::before {
+			right: 0;
+			opacity: 1;
+		}
+		color: $color_3;
+	}
+}
