@@ -20,7 +20,15 @@
       0.125em 0.125em 0.25em rgba(0, 0, 0, .15);
 }
 
-@media (min-width: 800px) {
+@media (min-width: 768px) {
+  :root {
+    --fs-h1: 3.5rem;
+    --fs-h2: 3rem;
+    --fs-h3: 1.125rem;
+    --fs-body: 1rem;
+  }
+}
+@media (min-width: 992px) {
   :root {
     --fs-h1: 4.5rem;
     --fs-h2: 3.75rem;
@@ -280,6 +288,8 @@ header .nav__list .nav__link:hover {
 /*  Intro section  */
 .intro {
   position: relative;
+  width: fit-content;
+  margin-inline: auto;
 }
 
 .intro__img {
@@ -296,7 +306,7 @@ header .nav__list .nav__link:hover {
   margin-top: 1.5rem;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .intro {
     display: grid;
     width: min-content;
@@ -306,9 +316,9 @@ header .nav__list .nav__link:hover {
     grid-template-columns: min-content max-content;
   }
   .intro__img {
-    height: 228px;
     grid-area: img;
-    min-width: 294px;
+    max-width: 294px;
+    aspect-ratio: 294/325;
     position: relative;
     z-index: -1;
   }
@@ -395,7 +405,7 @@ header .nav__list .nav__link:hover {
   box-shadow: var(--bs);
 }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .about-me {
     display: grid;
     grid-template-columns: 1fr 200px;
@@ -496,7 +506,7 @@ div.portfolio-item-details button {
   padding: 1rem;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   div.portfolio-item-details button {
     width: 9rem;
     margin: 0.5rem;
