@@ -33,3 +33,24 @@ navLinks.forEach(link => {
         document.body.classList.remove('nav-open');
     });
 });
+
+
+// Get the button
+const scrollUpBtn = document.getElementById("scrollUpBtn");
+
+// Show the button when the user scrolls down half of the window height
+window.onscroll = function() {
+    if (document.body.scrollTop > window.innerHeight / 2 || document.documentElement.scrollTop > window.innerHeight / 2) {
+        scrollUpBtn.style.display = "block"; // Show the button
+    } else {
+        scrollUpBtn.style.display = "none"; // Hide the button
+    }
+};
+
+// Scroll to the top smoothly when the button is clicked
+scrollUpBtn.onclick = function() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth" // Smooth scrolling
+    });
+};
