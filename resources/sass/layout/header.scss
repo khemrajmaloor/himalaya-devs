@@ -135,10 +135,10 @@ $font-family_1: "Font Awesome 6 Free";
 		color: $color_2;
 	}
 	&:hover {
+    color: $color_3;
 		&::before {
 			right: 0;
 			opacity: 1;
 		}
-		color: $color_3;
 	}
 }

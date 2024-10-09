@@ -13,6 +13,8 @@ $background-color_1: var(--clr-dark);
 	background-size: cover;
 	color: $color_1;
 	text-align: center;
+	position: relative; /* Position relative to contain the pseudo-element */
+	
 }
 .section__title--services {
 	color: $color_2;
@@ -44,4 +46,21 @@ $background-color_1: var(--clr-dark);
 	.service+.service {
 		margin-left: 2em;
 	}
+}
+
+
+.my-services::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1;
+}
+
+.my-services * {
+	position: relative;
+	z-index: 2;
 }

@@ -127,7 +127,7 @@ h3 {
 }
 
 .portfolio__item.devs {
-  padding: 30px;
+  padding: 2px;
 }
 
 .portfolio__item.devs .skillset {
@@ -332,6 +332,7 @@ header .nav__list .nav__link:hover {
   background-size: cover;
   color: var(--clr-light);
   text-align: center;
+  position: relative; /* Position relative to contain the pseudo-element */
 }
 
 .section__title--services {
@@ -368,6 +369,22 @@ header .nav__list .nav__link:hover {
     margin-left: 2em;
   }
 }
+.my-services::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.my-services * {
+  position: relative;
+  z-index: 2;
+}
+
 .about-me {
   max-width: 1000px;
   margin: 0 auto;
@@ -500,8 +517,8 @@ div.portfolio-item-details button {
 .portfolio__item {
   position: relative;
   overflow: hidden;
-  box-shadow: -13px 18px 10px 4px #101010;
-  margin: 1rem;
+  box-shadow: -3px 6px 7px 0px rgba(16, 16, 16, 0.5411764706);
+  margin: 1rem 0.5rem;
 }
 .portfolio__item:focus {
   position: relative;
@@ -541,6 +558,12 @@ div.portfolio-item-details button {
   .portfolio {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(204PX, 1fr));
+  }
+}
+@media (max-width: 400px) {
+  .section__title {
+    margin-top: 0rem;
+    margin-bottom: 1rem;
   }
 }
 
