@@ -26,8 +26,8 @@ header {
     left: 0;
     right: 0;
     z-index: 100;
-    transform: translateX(100%);
-    transition: transform 250ms cubic-bezier(.5, 0, .5, 1);
+    transform: translateX(100%); /* Hide the menu by default by sliding it off the screen */
+    transition: transform 0.3s ease;
   }
   
   .nav__list {
@@ -54,7 +54,8 @@ header {
 
 .nav-open {
   .nav {
-    transform: translateX(0);
+    transform: translateX(0); /* When nav-open is active, the menu is visible */
+    transition: transform 0.3s ease;
   }
   .nav-toggle {
     position: fixed;
