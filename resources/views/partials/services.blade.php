@@ -1,5 +1,5 @@
- {{-- <h2 class="section__title section__title--services">What I do</h2> --}}
- <h2 class="section__title section__title--services">FGH DFG do</h2>
+ <h2 class="section__title section__title--services">What I do</h2>
+ {{-- <h2 class="section__title section__title--services">FGH DFG do</h2> --}}
  <div class="services">
      <div class="service">
          <h3>Frontend</h3>
@@ -38,5 +38,5 @@
      </div> <!-- / service -->
  </div> <!-- / services -->
 
- {{-- <a href="#work" class="btn">My Work</a> --}}
- <a href="#work" class="btn">MJGFJGFJy FJFGJ</a>
+ <a href="#work" class="btn">My Work</a>
+ {{-- <a href="#work" class="btn">MJGFJGFJy FJFGJ</a> --}}

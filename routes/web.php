@@ -8,3 +8,7 @@ Route::get('/', function () {
 Route::get('/portfolio-item1', function () {
     return view('book');
 });
+
+Route::get('/mini', function () {
+    return view('mini');
+});

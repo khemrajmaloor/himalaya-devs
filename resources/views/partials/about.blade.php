@@ -1,5 +1,5 @@
- {{-- <h2 class="section__title section__title--about">Who I am</h2> --}}
- <h2 class="section__title section__title--about">FSHFGH IFDG HDHam</h2>
+ <h2 class="section__title section__title--about">Who I am</h2>
+ {{-- <h2 class="section__title section__title--about">FSHFGH IFDG HDHam</h2> --}}
  <p class="section__subtitle section__subtitle--about">Designer & developer based out of Canada</p>
 
  <div class="about-me__body">

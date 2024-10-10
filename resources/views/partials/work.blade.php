@@ -1,7 +1,7 @@
-{{-- 
+
 <h2 class="section__title section__title--work">My work</h2>
---}}
-<h2 class="section__title section__title--work">MDSF ASFASDF</h2>
+
+{{-- <h2 class="section__title section__title--work">MDSF ASFASDF</h2> --}}
 <p class="section__subtitle section__subtitle--work">A selection of my range of work</p>
 <div class="portfolio">
    <!-- Portfolio item 01 -->

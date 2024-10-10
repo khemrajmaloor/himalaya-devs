@@ -23,7 +23,7 @@
 <body>
     <header>
         <div class="logo">
-            &lt;SSSDSGG&gt;
+            &lt;KHEMRAJ&gt;
             <!-- <img src="img/devjane.png" alt=""> -->
         </div>
         <button class="nav-toggle" aria-label="toggle navigation">
