@@ -9,29 +9,42 @@
     .container {
         text-align: center;
         margin-top: 100px;
-        position: relative; /* Enable positioning for child elements */
+        position: relative;
+        /* Enable positioning for child elements */
     }
 
     .header {
+        display: flex;
+        justify-content: space-between;
+        /* Distributes space between items */
+        align-items: center;
+        /* Center vertically */
         position: absolute;
-        top: 20px; /* Adjust as needed */
-        right: 20px; /* Adjust as needed */
+        top: 20px;
+        left: 0;
+        /* Aligns to the left */
+        right: 0;
+        /* Aligns to the right */
+        padding: 0 20px;
+        /* Adds padding to the sides */
     }
 
     .email-logo {
-        height: 40px; /* Set a height for the logo */
-        width: 40px; /* Set a width for the logo */
-        border-radius: 50%; /* Makes the image rounded */
-        overflow: hidden; /* Ensures no overflow */
-        vertical-align: middle; /* Aligns the image with the text */
-        margin-right: 16px; /* Space between image and text */
-        margin-left: 10px; /* Space between image and text */
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        vertical-align: middle;
+        margin-left: 10px;
+        /* Space between image and text */
     }
 
     .email-link {
         font-size: 14px;
-        padding: 0px 4px;
-        color: #6e6e6e; /* Adjust color as needed */
+        padding: 0 4px;
+        /* Adjust padding for space */
+        color: #6e6e6e;
+        /* Adjust color as needed */
     }
 
     .search-container {
@@ -137,18 +150,98 @@
     input::placeholder {
         font-size: 18px;
     }
+
+    .button-container {
+        margin-top: 25px;
+        /* Space above buttons */
+        display: flex;
+        /* Use flexbox for alignment */
+        justify-content: center;
+        /* Center items horizontally */
+        gap: 10px;
+        /* Space between buttons */
+    }
+
+    .gNO89b,
+    .RNmpXc {
+        padding: 10px 20px;
+        /* Add padding to buttons */
+        border: none;
+        /* Remove default border */
+        border-radius: 5px;
+        /* Rounded corners */
+        background-color: #4285f4;
+        /* Button background color */
+        color: white;
+        /* Text color */
+        font-size: 16px;
+        /* Font size */
+        cursor: pointer;
+        /* Pointer on hover */
+        transition: background-color 0.3s;
+        /* Transition for hover effect */
+    }
+
+    .gNO89b:hover,
+    .RNmpXc:hover {
+        background-color: #357ae8;
+        /* Darker shade on hover */
+    }
+
+    .RNmpXc {
+        background-color: #fbbc05;
+        /* Different background for the second button */
+    }
+
+    .RNmpXc:hover {
+        background-color: #f9c846;
+        /* Darker shade on hover */
+    }
+
+    /* Add this to your existing styles */
+    #SIvCob {
+        text-align: center;
+        /* Center the text */
+        margin-top: 20px;
+        /* Space above */
+        font-size: 15px;
+        /* Set font size */
+    }
+
+    #SIvCob a {
+        margin: 0 10px;
+        /* Space between links */
+        color: #1a0dab;
+        /* Link color */
+        text-decoration: none;
+        /* Remove underline */
+        transition: color 0.3s;
+        /* Transition for hover effect */
+    }
+
+    #SIvCob a:hover {
+        color: #4285f4;
+        /* Change color on hover */
+    }
 </style>
 
 <div class="header">
-    <a href="mailto:your-email@example.com" class="email-link">Gmail</a>
-    <a href="mailto:your-email@example.com" class="email-link">Image</a>
-    <img src={{ asset('/images/download.png') }} alt="Email Logo" class="email-logo">
+    <div class="left-links">
+        <a href="mailto:your-email@example.com" class="email-link" style=" text-decoration: none;">About</a>
+        <a href="mailto:your-email@example.com" class="email-link" style=" text-decoration: none;">Store</a>
+    </div>
+    <div class="right-links">
+        <a href="mailto:your-email@example.com" class="email-link">Gmail</a>
+        <a href="mailto:your-email@example.com" class="email-link">Image</a>
+        <img src="{{ asset('/images/download.png') }}" alt="Email Logo" class="email-logo">
+    </div>
 </div>
+
 <div class="container">
 
     <img src="{{ asset('images/google_logo.svg') }}" alt=""
         style="display: block; margin: 0 auto; margin-bottom: 20px;">
-    
+
     <div class="search-container">
         <div id="icon"></div>
         <input type="text" id="search-query" placeholder="Search Google or type a URL here"
@@ -161,6 +254,33 @@
     <div id="suggestions"></div>
     <div class="alert" id="no-results-alert">No results found.</div>
     <div id="results"></div>
+</div>
+<div class="google-social">
+
+    <center class="social-link-icon" style="margin-top:27px;">
+        <input class="gNO89b" value="Google Search" aria-label="Google Search" name="btnK" role="button"
+            tabindex="0" type="submit" data-ved="0ahUKEwjyl6Cc-4iJAxXYnK8BHdMgDzAQ4dUDCB8">
+        <input class="RNmpXc" id="luckyButton" value="I'm Feeling Lucky" aria-label="I'm Feeling Lucky" name="btnI"
+            type="submit" jsaction="trigger.kWlxhc">
+    </center>
+
+    <div id="SIvCob">
+        Google offered in:
+        <a href="javascript:void(0);" onclick="setLanguage('hi')">हिन्दी</a>
+        <a href="javascript:void(0);" onclick="setLanguage('pa')">पहाड़ी</a>
+        <a href="javascript:void(0);" onclick="setLanguage('sa')">संस्कृत</a>
+        <a href="javascript:void(0);" onclick="setLanguage('bn')">বাংলা</a>
+        <a href="javascript:void(0);" onclick="setLanguage('te')">తెలుగు</a>
+        <a href="javascript:void(0);" onclick="setLanguage('mr')">मराठी</a>
+        <a href="javascript:void(0);" onclick="setLanguage('ta')">தமிழ்</a>
+        <a href="javascript:void(0);" onclick="setLanguage('gu')">ગુજરાતી</a>
+        <a href="javascript:void(0);" onclick="setLanguage('kn')">ಕನ್ನಡ</a>
+        <a href="javascript:void(0);" onclick="setLanguage('ml')">മലയാളം</a>
+        <a href="javascript:void(0);" onclick="setLanguage('pa')">ਪੰਜਾਬੀ</a>
+    </div>
+
+
+
 </div>
 
 
@@ -239,6 +359,8 @@
         displayResults(data.items);
     }
 
+
+
     function displayResults(items) {
         const resultsDiv = document.getElementById('results');
         resultsDiv.innerHTML = '';
@@ -272,4 +394,48 @@
             performSearch(searchInput.value); // Call performSearch with current input value
         }
     });
+
+
+    function setLanguage(langCode) {
+        const luckyButton = document.getElementById('luckyButton');
+
+        // Set the new button value based on the selected language
+        switch (langCode) {
+            case 'hi':
+                luckyButton.value = "मैं भाग्यशाली हूँ"; // Hindi
+                break;
+            case 'pa':
+                luckyButton.value = "आऊ भागा बला है"; // Pahari
+                break;
+            case 'sa':
+                luckyButton.value = "अहं भाग्यशाली अस्मि"; // Pahari
+                break;
+            case 'bn':
+                luckyButton.value = "আমি সৌভাগ্যবান"; // Bengali
+                break;
+            case 'te':
+                luckyButton.value = "నేను అదృష్టవంతుడిని"; // Telugu
+                break;
+            case 'mr':
+                luckyButton.value = "मी भाग्यवान आहे"; // Marathi
+                break;
+            case 'ta':
+                luckyButton.value = "நான் அதிர்ஷ்டம்"; // Tamil
+                break;
+            case 'gu':
+                luckyButton.value = "હું નસીબદાર છું"; // Gujarati
+                break;
+            case 'kn':
+                luckyButton.value = "ನಾನು ಅದೃಷ್ಟಶಾಲಿ"; // Kannada
+                break;
+            case 'ml':
+                luckyButton.value = "ഞാൻ ഭാഗ്യശാലി"; // Malayalam
+                break;
+            case 'pa':
+                luckyButton.value = "ਮੈਂ ਕਿਸਮਤ ਵਾਲਾ ਹਾਂ"; // Punjabi
+                break;
+            default:
+                luckyButton.value = "I'm Feeling Lucky"; // Default case
+        }
+    }
 </script>
