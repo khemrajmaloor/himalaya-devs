@@ -11,7 +11,6 @@
         .container {
             text-align: center;
             margin-top: 100px;
-            position: relative;
         }
 
         h1 {
@@ -25,15 +24,18 @@
         }
 
         .search-container {
-            display: inline-grid;
+            display: inline-flex;
             justify-content: center;
-            top: 0p;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            max-width: 800px; /* Increased max width */
+            margin: 0 auto;
         }
 
         input[type="text"] {
-            width: 500px;
-            padding: 15px 60px 15px 15px;
-            /* Add padding to accommodate the mic icon */
+            width: 100%;
+            padding: 15px 60px;
             font-size: 1.5em;
             border: 1px solid #dcdcdc;
             border-radius: 24px;
@@ -45,25 +47,38 @@
             border: 1px solid #4285f4;
         }
 
+        #icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 24px; /* Set height as per your image */
+            width: 24px; /* Maintain aspect ratio */
+            background-color: #5f6368; /* Desired color */
+            -webkit-mask-image: url({{ asset('/images/search_cr23.svg') }});
+            -webkit-mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+        }
+
         .mic-icon {
             position: absolute;
-            right: 420px;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
             cursor: pointer;
-            /* right: 0; */
             font-size: 1.5em;
-            bottom: 22px;
             color: #4285f4;
-            /* display: flex; */
         }
 
         #suggestions {
             margin-top: 10px;
             text-align: left;
             max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 10px auto;
             background-color: #f9f9f9;
             display: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .suggestion-item {
@@ -79,8 +94,7 @@
             margin-top: 40px;
             text-align: left;
             max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 10px auto;
         }
 
         .result-item {
@@ -100,12 +114,11 @@
             color: #545454;
         }
 
-        /* Responsive design */
-        @media (max-width: 600px) {
-            input[type="text"] {
-                width: 100%;
-            }
+        input::placeholder {
+            font-size: 18px;
+        }
 
+        @media (max-width: 600px) {
             h1 {
                 font-size: 1.1em;
             }
@@ -113,12 +126,15 @@
     </style>
 
     <div class="container">
-        <h1>Mini <span class="highlight">Google</span></h1>
+        <script async src="https://cse.google.com/cse.js?cx=77401807e11064cae"></script>
+        <img src="{{ asset('images/google_logo.svg') }}" alt="" style="display: block; margin: 0 auto; margin-bottom: 20px;">
         <div class="search-container">
-            <input type="text" id="search-query" placeholder="Search..." oninput="showSuggestions(this.value)">
+            <div id="icon"></div>
+            <input type="text" id="search-query" placeholder="Search Google or type a URL here" 
+                   oninput="showSuggestions(this.value)" onclick="showSuggestions(this.value)">
             <span class="mic-icon" id="mic-btn" onclick="startRecording()">
                 <img src="{{ asset('images/mic.svg') }}" alt="Microphone">
-            </span> <!-- Microphone icon inside input -->
+            </span>
         </div>
         <div id="suggestions"></div>
         <div id="results"></div>
@@ -128,38 +144,49 @@
         let previousSearches = [];
         let recognizing = false;
         const micBtn = document.getElementById('mic-btn');
+        const searchInput = document.getElementById('search-query');
 
-        // Speech recognition setup
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         const recognition = new SpeechRecognition();
 
         recognition.onstart = () => {
             recognizing = true;
-            micBtn.style.color = "#34a853"; // Change color when active
+            micBtn.style.color = "#34a853"; 
         };
 
         recognition.onend = () => {
             recognizing = false;
-            micBtn.style.color = "#4285f4"; // Reset color
+            micBtn.style.color = "#4285f4"; 
         };
 
         recognition.onresult = (event) => {
             const transcript = event.results[0][0].transcript;
-            document.getElementById('search-query').value = transcript; // Set the input to the recognized speech
-            performSearch(transcript); // Perform search
+            searchInput.value = transcript; 
+            performSearch(transcript); 
         };
 
         micBtn.onclick = () => {
             if (recognizing) {
-                recognition.stop(); // Stop recognition if it's active
+                recognition.stop();
             } else {
-                recognition.start(); // Start recognition
+                recognition.start();
             }
         };
 
+        searchInput.addEventListener('focus', () => {
+            searchInput.placeholder = ''; 
+            showSuggestions(searchInput.value); // Show suggestions when focused
+        });
+
+        searchInput.addEventListener('blur', () => {
+            if (searchInput.value === '') {
+                searchInput.placeholder = 'Search Google or type a URL here'; 
+            }
+        });
+
         async function performSearch(query) {
-            const apiKey = 'YOUR_API_KEY'; // Replace with your API key
-            const searchEngineId = 'YOUR_SEARCH_ENGINE_ID'; // Replace with your CSE ID
+            const apiKey = 'AIzaSyCfxkyY_XiX5uVWi8GOdF4ulfYWN0XATNk'; 
+            const searchEngineId = '77401807e11064cae'; 
             const url = `https://www.googleapis.com/customsearch/v1?q=${query}&key=${apiKey}&cx=${searchEngineId}`;
 
             const response = await fetch(url);
@@ -193,19 +220,17 @@
                 return;
             }
 
-            // Add query to previous searches if not already included
             if (!previousSearches.includes(query)) {
                 previousSearches.push(query);
             }
 
-            // Show previous searches
             previousSearches.forEach(search => {
                 if (search.toLowerCase().includes(query.toLowerCase())) {
                     const suggestionItem = document.createElement('div');
                     suggestionItem.className = 'suggestion-item';
                     suggestionItem.innerText = search;
                     suggestionItem.onclick = () => {
-                        document.getElementById('search-query').value = search;
+                        searchInput.value = search;
                         performSearch(search);
                         suggestionsDiv.style.display = 'none';
                     };
