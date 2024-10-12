@@ -10,23 +10,18 @@
         text-align: center;
         margin-top: 100px;
         position: relative;
-        /* Enable positioning for child elements */
     }
 
     .header {
         display: flex;
+        flex-wrap: wrap; /* Allow items to wrap */
         justify-content: space-between;
-        /* Distributes space between items */
         align-items: center;
-        /* Center vertically */
         position: absolute;
         top: 20px;
         left: 0;
-        /* Aligns to the left */
         right: 0;
-        /* Aligns to the right */
         padding: 0 20px;
-        /* Adds padding to the sides */
     }
 
     .email-logo {
@@ -36,15 +31,12 @@
         overflow: hidden;
         vertical-align: middle;
         margin-left: 10px;
-        /* Space between image and text */
     }
 
     .email-link {
         font-size: 14px;
         padding: 0 4px;
-        /* Adjust padding for space */
         color: #6e6e6e;
-        /* Adjust color as needed */
     }
 
     .search-container {
@@ -153,77 +145,98 @@
 
     .button-container {
         margin-top: 25px;
-        /* Space above buttons */
         display: flex;
-        /* Use flexbox for alignment */
         justify-content: center;
-        /* Center items horizontally */
         gap: 10px;
-        /* Space between buttons */
     }
 
     .gNO89b,
     .RNmpXc {
         padding: 10px 20px;
-        /* Add padding to buttons */
         border: none;
-        /* Remove default border */
         border-radius: 5px;
-        /* Rounded corners */
         background-color: #4285f4;
-        /* Button background color */
         color: white;
-        /* Text color */
         font-size: 16px;
-        /* Font size */
         cursor: pointer;
-        /* Pointer on hover */
         transition: background-color 0.3s;
-        /* Transition for hover effect */
     }
 
     .gNO89b:hover,
     .RNmpXc:hover {
         background-color: #357ae8;
-        /* Darker shade on hover */
     }
 
     .RNmpXc {
         background-color: #fbbc05;
-        /* Different background for the second button */
     }
 
     .RNmpXc:hover {
         background-color: #f9c846;
-        /* Darker shade on hover */
     }
 
-    /* Add this to your existing styles */
     #SIvCob {
         text-align: center;
-        /* Center the text */
         margin-top: 20px;
-        /* Space above */
         font-size: 15px;
-        /* Set font size */
     }
 
     #SIvCob a {
         margin: 0 10px;
-        /* Space between links */
         color: #1a0dab;
-        /* Link color */
         text-decoration: none;
-        /* Remove underline */
         transition: color 0.3s;
-        /* Transition for hover effect */
     }
 
     #SIvCob a:hover {
         color: #4285f4;
-        /* Change color on hover */
     }
+
+    /* Media Queries for responsiveness */
+    @media (max-width: 768px) {
+        .header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .search-container {
+            padding: 0 10px; /* Reduce padding on smaller screens */
+        }
+
+        input[type="text"] {
+            padding: 10px 40px; /* Adjust padding for mobile */
+        }
+
+        .result-item a {
+            font-size: 1em; /* Smaller font size for links */
+        }
+
+        .button-container {
+            flex-direction: column; /* Stack buttons vertically */
+        }
+
+        .gNO89b,
+        .RNmpXc {
+            width: 100%; /* Full width buttons */
+        }
+    }
+
+    @media (max-width: 480px) {
+        input[type="text"] {
+            font-size: 16px; /* Smaller font size */
+        }
+
+        .header {
+            padding: 10px; /* Less padding on smaller devices */
+        }
+    }
+
+
+   
+
+
 </style>
+
 
 <div class="header">
     <div class="left-links">
@@ -282,6 +295,99 @@
 
 
 </div>
+<div id="welcomeModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="modalClose">&times;</span>
+        <h2>
+            <span class="color-blue">G</span>
+            <span class="color-red">o</span>
+            <span class="color-yellow">o</span>
+            <span class=" color-purple">g</span>
+            <span class="color-green">l</span>
+            <span class="color-pink">e</span>
+        </h2>
+        <p>Thank you for visiting our page.</p>
+        <button id="modalButton">Got it!</button>
+    </div>
+</div>
+
+<style>
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    backdrop-filter: blur(2px);
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #888;
+    width: 400px;
+    max-width:50%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.color-blue {
+    color: #357ae8;
+}
+
+.color-red {
+    color: rgba(240, 25, 25, 0.897);
+}
+
+.color-yellow {
+    color: #fbbc05;
+}
+
+.color-green {
+    color: rgb(19, 172, 19);
+}
+
+.color-purple {
+    color: #357ae8;
+}
+
+.color-orange {
+    color: #fbbc05;
+}
+
+.color-pink {
+    color: rgb(231, 24, 69);
+}
+button#modalButton {
+    padding: 6px 12px;
+    width: 129px;
+    background: #4285f4;
+    border: none;
+    color: white;
+}
+</style>
+
+
+
 
 
 <script>
@@ -438,4 +544,28 @@
                 luckyButton.value = "I'm Feeling Lucky"; // Default case
         }
     }
+
+    // Show modal on page load
+    window.onload = function() {
+        const modal = document.getElementById("welcomeModal");
+        modal.style.display = "block";
+
+        // Close the modal when the user clicks on <span> (x)
+        document.getElementById("modalClose").onclick = function() {
+            modal.style.display = "none";
+        };
+
+        // Close the modal when the user clicks the button
+        document.getElementById("modalButton").onclick = function() {
+            modal.style.display = "none";
+        };
+
+        // Close the modal when clicking outside of the modal content
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
+    };
+
 </script>
