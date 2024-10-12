@@ -330,6 +330,7 @@
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
+    border-radius: 10px;
     padding: 20px;
     text-align: center;
     border: 1px solid #888;
