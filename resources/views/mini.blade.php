@@ -1,5 +1,4 @@
-@extends('layout.main')
-@section('page-container')
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,30 +12,20 @@
             margin-top: 100px;
         }
 
-        h1 {
-            font-size: 3em;
-            color: #4285f4;
-            margin-bottom: 20px;
-        }
-
-        .highlight {
-            color: #fbbc05;
-        }
-
         .search-container {
             display: inline-flex;
             justify-content: center;
             align-items: center;
             position: relative;
             width: 100%;
-            max-width: 800px; /* Increased max width */
+            max-width: 800px;
             margin: 0 auto;
         }
 
         input[type="text"] {
             width: 100%;
             padding: 15px 60px;
-            font-size: 1.5em;
+            font-size: 18px;
             border: 1px solid #dcdcdc;
             border-radius: 24px;
             outline: none;
@@ -52,9 +41,9 @@
             left: 15px;
             top: 50%;
             transform: translateY(-50%);
-            height: 24px; /* Set height as per your image */
-            width: 24px; /* Maintain aspect ratio */
-            background-color: #5f6368; /* Desired color */
+            height: 24px;
+            width: 24px;
+            background-color: #5f6368;
             -webkit-mask-image: url({{ asset('/images/search_cr23.svg') }});
             -webkit-mask-size: contain;
             -webkit-mask-repeat: no-repeat;
@@ -73,9 +62,9 @@
         #suggestions {
             margin-top: 10px;
             text-align: left;
-            max-width: 500px;
+            width: 100%;
+            max-width: 800px;
             margin: 10px auto;
-            background-color: #f9f9f9;
             display: none;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -114,14 +103,17 @@
             color: #545454;
         }
 
-        input::placeholder {
-            font-size: 18px;
+        .alert {
+            display: none;
+            background-color: #f44336;
+            color: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
         }
 
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 1.1em;
-            }
+        input::placeholder {
+            font-size: 18px;
         }
     </style>
 
@@ -130,33 +122,40 @@
         <img src="{{ asset('images/google_logo.svg') }}" alt="" style="display: block; margin: 0 auto; margin-bottom: 20px;">
         <div class="search-container">
             <div id="icon"></div>
-            <input type="text" id="search-query" placeholder="Search Google or type a URL here" 
-                   oninput="showSuggestions(this.value)" onclick="showSuggestions(this.value)">
+            <input type="text" id="search-query" placeholder="Search Google or type a URL here" oninput="showSuggestions(this.value)">
             <span class="mic-icon" id="mic-btn" onclick="startRecording()">
                 <img src="{{ asset('images/mic.svg') }}" alt="Microphone">
             </span>
         </div>
+
         <div id="suggestions"></div>
+        <div class="alert" id="no-results-alert">No results found.</div>
         <div id="results"></div>
     </div>
 
     <script>
-        let previousSearches = [];
-        let recognizing = false;
-        const micBtn = document.getElementById('mic-btn');
-        const searchInput = document.getElementById('search-query');
+        const keywords = [
+            'weather',
+            'news',
+            'sports',
+            'technology',
+            'food recipes',
+            'travel tips',
+            'shopping deals'
+        ];
 
+        const searchInput = document.getElementById('search-query');
+        const suggestionsDiv = document.getElementById('suggestions');
+        const micBtn = document.getElementById('mic-btn');
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         const recognition = new SpeechRecognition();
 
         recognition.onstart = () => {
-            recognizing = true;
-            micBtn.style.color = "#34a853"; 
+            micBtn.style.color = "#34a853"; // Change mic icon color on start
         };
 
         recognition.onend = () => {
-            recognizing = false;
-            micBtn.style.color = "#4285f4"; 
+            micBtn.style.color = "#4285f4"; // Change back on end
         };
 
         recognition.onresult = (event) => {
@@ -165,24 +164,39 @@
             performSearch(transcript); 
         };
 
-        micBtn.onclick = () => {
-            if (recognizing) {
-                recognition.stop();
+        function startRecording() {
+            recognition.start();
+        }
+
+        function showSuggestions(query) {
+            suggestionsDiv.innerHTML = '';
+
+            if (query.length === 0) {
+                suggestionsDiv.style.display = 'none';
+                return;
+            }
+
+            const filteredKeywords = keywords.filter(keyword =>
+                keyword.toLowerCase().includes(query.toLowerCase())
+            );
+
+            if (filteredKeywords.length > 0) {
+                filteredKeywords.forEach(keyword => {
+                    const suggestionItem = document.createElement('div');
+                    suggestionItem.className = 'suggestion-item';
+                    suggestionItem.innerText = keyword;
+                    suggestionItem.onclick = () => {
+                        searchInput.value = keyword;
+                        performSearch(keyword);
+                        suggestionsDiv.style.display = 'none';
+                    };
+                    suggestionsDiv.appendChild(suggestionItem);
+                });
+                suggestionsDiv.style.display = 'block';
             } else {
-                recognition.start();
+                suggestionsDiv.style.display = 'none';
             }
-        };
-
-        searchInput.addEventListener('focus', () => {
-            searchInput.placeholder = ''; 
-            showSuggestions(searchInput.value); // Show suggestions when focused
-        });
-
-        searchInput.addEventListener('blur', () => {
-            if (searchInput.value === '') {
-                searchInput.placeholder = 'Search Google or type a URL here'; 
-            }
-        });
+        }
 
         async function performSearch(query) {
             const apiKey = 'AIzaSyCfxkyY_XiX5uVWi8GOdF4ulfYWN0XATNk'; 
@@ -197,8 +211,10 @@
         function displayResults(items) {
             const resultsDiv = document.getElementById('results');
             resultsDiv.innerHTML = '';
+            const noResultsAlert = document.getElementById('no-results-alert');
+            noResultsAlert.style.display = 'none'; // Hide alert by default
 
-            if (items) {
+            if (items && items.length > 0) {
                 items.forEach(item => {
                     const resultItem = document.createElement('div');
                     resultItem.className = 'result-item';
@@ -207,38 +223,23 @@
                     resultsDiv.appendChild(resultItem);
                 });
             } else {
-                resultsDiv.innerHTML = 'No results found.';
+                showNoResultsAlert();
             }
         }
 
-        function showSuggestions(query) {
-            const suggestionsDiv = document.getElementById('suggestions');
-            suggestionsDiv.innerHTML = '';
-
-            if (query.length === 0) {
-                suggestionsDiv.style.display = 'none';
-                return;
-            }
-
-            if (!previousSearches.includes(query)) {
-                previousSearches.push(query);
-            }
-
-            previousSearches.forEach(search => {
-                if (search.toLowerCase().includes(query.toLowerCase())) {
-                    const suggestionItem = document.createElement('div');
-                    suggestionItem.className = 'suggestion-item';
-                    suggestionItem.innerText = search;
-                    suggestionItem.onclick = () => {
-                        searchInput.value = search;
-                        performSearch(search);
-                        suggestionsDiv.style.display = 'none';
-                    };
-                    suggestionsDiv.appendChild(suggestionItem);
-                }
-            });
-
-            suggestionsDiv.style.display = previousSearches.length > 0 ? 'block' : 'none';
+        function showNoResultsAlert() {
+            const noResultsAlert = document.getElementById('no-results-alert');
+            noResultsAlert.style.display = 'block'; // Show alert
+            setTimeout(() => {
+                noResultsAlert.style.display = 'none'; // Hide alert after 3 seconds
+            }, 3000);
         }
+
+        searchInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent default form submission
+                performSearch(searchInput.value); // Call performSearch with current input value
+            }
+        });
     </script>
-@endsection
+
