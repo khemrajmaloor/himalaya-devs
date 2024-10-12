@@ -320,6 +320,7 @@
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
+    border-radius: 10px;
     backdrop-filter: blur(2px);
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
