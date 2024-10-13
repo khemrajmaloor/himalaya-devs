@@ -193,43 +193,43 @@
     }
 
     /* Media Queries for responsiveness */
-    @media (max-width: 768px) {
+    /* @media (max-width: 768px) {
         .header {
             flex-direction: column;
             align-items: flex-start;
         }
 
         .search-container {
-            padding: 0 10px; /* Reduce padding on smaller screens */
+            padding: 0 10px; 
         }
 
         input[type="text"] {
-            padding: 10px 40px; /* Adjust padding for mobile */
+            padding: 10px 40px; 
         }
 
         .result-item a {
-            font-size: 1em; /* Smaller font size for links */
+            font-size: 1em; 
         }
 
         .button-container {
-            flex-direction: column; /* Stack buttons vertically */
+            flex-direction: column; 
         }
 
         .gNO89b,
         .RNmpXc {
-            width: 100%; /* Full width buttons */
+            width: 100%; 
         }
     }
 
     @media (max-width: 480px) {
         input[type="text"] {
-            font-size: 16px; /* Smaller font size */
+            font-size: 16px; 
         }
 
         .header {
-            padding: 10px; /* Less padding on smaller devices */
+            padding: 10px; 
         }
-    }
+    } */
 
 
    
@@ -289,7 +289,7 @@
         <a href="javascript:void(0);" onclick="setLanguage('gu')">ગુજરાતી</a>
         <a href="javascript:void(0);" onclick="setLanguage('kn')">ಕನ್ನಡ</a>
         <a href="javascript:void(0);" onclick="setLanguage('ml')">മലയാളം</a>
-        <a href="javascript:void(0);" onclick="setLanguage('pa')">ਪੰਜਾਬੀ</a>
+        <a href="javascript:void(0);" onclick="setLanguage('pu')">ਪੰਜਾਬੀ</a>
     </div>
 
 
@@ -538,7 +538,7 @@ button#modalButton {
             case 'ml':
                 luckyButton.value = "ഞാൻ ഭാഗ്യശാലി"; // Malayalam
                 break;
-            case 'pa':
+            case 'pu':
                 luckyButton.value = "ਮੈਂ ਕਿਸਮਤ ਵਾਲਾ ਹਾਂ"; // Punjabi
                 break;
             default:
